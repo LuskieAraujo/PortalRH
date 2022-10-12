@@ -1,5 +1,6 @@
 ﻿using PortalRH.Domain.Entities;
 using PortalRH.Domain.Interfaces;
+using System.Data;
 
 namespace PortalRH.Infra.Repositories;
 public class UsuarioRepository : IUsuarioRepository
@@ -13,21 +14,24 @@ public class UsuarioRepository : IUsuarioRepository
 		catch (Exception ex)
 		{
 			Console.WriteLine(ex.Message);
-			return new List<Usuario>
-			{
-				new Usuario
-				{
-					Id = 1,
-					Name = "Lucas",
-					Email = "lucas.araujo@be3.co"
-				}
-			};
+			return new List<Usuario>();
 		}
 	}
 
-	public int TesteConnection()
+	public List<Pais> TesteConnection()
 	{
 		var conn = new Connection();
-		return conn.Test();
+		List<Pais> lista = new List<Pais>();
+		foreach (DataRow line in conn.Test().Rows)
+		{
+			lista.Add(new Pais
+			{
+				Id = (int)line["Id"],
+				Nome = line["Nome"].ToString(),
+				Nacionalidade = line["Nacionalidade"].ToString()
+			});
+		}
+
+		return lista;
 	}
 }

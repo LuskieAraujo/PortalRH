@@ -26,20 +26,4 @@ public class UsuarioService : IUsuarioService
 
 		return usuarios;
 	}
-
-	public List<PaisViewModel> TesteConexao()
-	{
-		var retorno = new List<PaisViewModel>();
-		foreach(var linha in _usuarioRepository.TesteConnection())
-		{
-			retorno.Add(new PaisViewModel()
-			{
-				Id = linha.Id,
-				Nome = linha.Nome,
-				Nacionalidade = linha.Nacionalidade
-			});
-		}
-
-		return retorno;
-	}
 }

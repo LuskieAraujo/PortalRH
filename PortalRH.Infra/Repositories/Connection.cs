@@ -33,15 +33,8 @@ public class Connection
 		return dt;
 	}
 
-	public bool UpdateRegister(string table, List<string> columns, List<string> values)
+	public bool UpdateRegister(string updateCommand)
 	{
-		string startCommand = "UPDATE ";
-		string midCommand = "SET ";
-
-
-
-		string updateCommand = startCommand + table + midCommand;
-
 		try
 		{
 			using(SqlConnection conn = GetConnection())
@@ -59,16 +52,17 @@ public class Connection
 		}
 	}
 
-	public DataTable Test()
+	public bool InsertRegister()
 	{
-		DataTable result = new DataTable();
-		using (SqlConnection conn = GetConnection())
+		try
 		{
-			conn.Open();
-			
-			result.Load(conn.ExecuteReader("SELECT * FROM PortalRH.Support.Pais"));
-		}
 
-		return result;
+			return true;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			return false;
+		}
 	}
 }

@@ -43,9 +43,4 @@ public class UsuarioController : ControllerBase
 
 	}
 
-	[HttpGet("test")]
-	public List<PaisViewModel> TestConnection()
-	{
-		
-	}
 }

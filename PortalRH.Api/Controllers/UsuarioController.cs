@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PortalRH.Application.Interfaces;
 using PortalRH.Application.ViewModels;
+using PortalRH.Application.Models;
 
 namespace PortalRH.Api.Controllers;
 
@@ -13,6 +14,7 @@ public class UsuarioController : ControllerBase
 	{
 		_usuarioService = usuarioService;
 	}
+
 	[HttpGet]
 	public ActionResult<List<UsuarioViewModel>> Get()
 	{
@@ -20,27 +22,27 @@ public class UsuarioController : ControllerBase
 	}
 
 	[HttpGet("{id}")]
-	public string Get(int id)
+	public ActionResult<UsuarioViewModel> Get(int id)
 	{
-		return "value";
+		return Ok(new UsuarioViewModel());
 	}
 
 	[HttpPost]
-	public void Post([FromBody] string value)
+	public bool Post([FromBody] UsuarioModel usuario)
 	{
-
+		return true;
 	}
 
 	[HttpPut("{id}")]
-	public void Put(int id, [FromBody] string value)
+	public bool Put(int id, [FromBody] UsuarioModel value)
 	{
-
+		return true;
 	}
 
 	[HttpDelete("{id}")]
-	public void Delete(int id)
+	public bool Delete(int id)
 	{
-
+		return true;
 	}
 
 }

@@ -17,6 +17,21 @@ public class UsuarioRepository : IUsuarioRepository
 			return new List<Usuario>();
 		}
 	}
+	public Usuario BuscaUsuario(int id)
+	{
+		try
+		{
+			Usuario usuario = new Usuario();
 
+
+
+			return usuario;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			return new Usuario();
+		}
+	}
 
 }
